@@ -1,0 +1,42 @@
+{% extends "home/base.html" %}
+{% block title %} Rsgister User {% endblock title %}
+{% block body %}
+
+
+    <!-- <div class="container">
+        {% if form.errors %}
+        <div class="alert alert-warning alert-dismissible fade show col-6 offset-md-3" role="alert">
+            <strong> <p>There was an error with the form.</p> </strong> 
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {% endif %}
+    </div> -->
+
+    
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col">
+                <div class="card">
+                    <div class="card-body">
+                        <legend class="text-center"><h1>User Registration</h1></legend>
+                        <form action="{% url 'register' %}" method="post">
+                            {% csrf_token %}
+                                {{ form.as_p }}
+                            <button class="btn btn-primary">Register</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock body %}
+
+
+<div class="container">
+    {% if form.errors %}
+      <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong> <p>There was an error with the form.</p> </strong> 
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    {% endif %}
+</div>

@@ -1,0 +1,131 @@
+{% extends "home/base.html" %}
+
+{% block title %}Add Employee{% endblock title %}
+
+{% block body %}
+    <h1 class="text-center my-3">Employee Rergistration</h1>
+    <div class="row">
+        <div class="col-md-6 offset-md-3 ">
+            <div class="card big-info">
+                <div class="card-body">
+                        <form action='/department' method='POST'> {% csrf_token %}
+                            <div class="mb-3">
+                                <label class="form-label">Employee Code</label>
+                                <input type="text" class="form-control" name="code" placeholder="Enter the employee code" required>
+                            </div>
+                            <div class="row">
+                                <div class="mb-3 col">
+                                    <label class="form-label">First Name</label> 
+                                    <input type="text" class="form-control" name="fname" placeholder="Enter the employee name" required>
+                                </div>
+                                <div class="mb-3 col">
+                                    <label class="form-label">Middle Name</label>
+                                    <input type="text" class="form-control" name="mname" placeholder="Enter the employee name">
+                                </div>
+                                <div class="mb-3 col">
+                                    <label class="form-label">Last Name</label>
+                                    <input type="text" class="form-control" name="lname" placeholder="Enter the employee name" required>
+                                </div>
+                            </div>
+                            <div class="row">
+                                    <div class="mb-3 col">
+                                        <label for="exampleInputEmail1" class="form-label">Email address</label>
+                                        <input type="email" class="form-control" name="email" placeholder="example@gmail.com">
+                                        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                                    </div>
+                                    <div class="mb-3 col">
+                                        <label class="form-label">Phone Number</label>
+                                        <input type="text" class="form-control" name="phone" placeholder="Enter the employee phone number">
+                                    </div>
+                            </div>
+                            <div class="row">
+                                    <div class="mb-3 col">
+                                        <label class="form-label">District</label>
+                                        <select class="form-select" aria-label="Default select example" name="district">
+                                            <option selected disabled="true">--Select Employee District--</option>
+                                            {% for district in districts %}
+                                            <option value="{{district.district_code}}">{{district.district_name}}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                    <div class="mb-3 col">
+                                        <label class="form-label">Office</label>
+                                        <select class="form-select" aria-label="Default select example" name="office">
+                                            <option selected disabled="true">--Select Employee Office--</option>
+                                            {% for office in offices %}
+                                            <option value="{{office.id}}">{{office.office_name}}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                    <div class="mb-3 col">
+                                        <label class="form-label">Designation</label>
+                                        <select class="form-select" aria-label="Default select example" name="designation">
+                                            <option selected disabled="true">--Select Employee Deignation--</option>
+                                            {% for d in designations %}
+                                            <option value="{{d.designation_code}}">{{d.desigantion_name }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                            </div>
+                            <div class="row">
+                                    <div class="mb-3 col">
+                                        <label class="form-label">Grade Pay of the Employee</label>
+                                        <select class="form-select" aria-label="Default select example" name="gradepay">
+                                            <option selected disabled="true">--Select Employee Grade Pay--</option>
+                                            {% for pay in gradepays %}
+                                            <option value="{{pay.id}}">{{pay.gradepay}}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                    <div class="mb-3 col">
+                                        <label class="form-label">Legislative Assembly Constituency</label>
+                                        <select class="form-select" name="lac">
+                                            <option selected disabled="true">--Select Employee LAC--</option>
+                                            {% for l in lac %}
+                                            <option value="{{l.id}}">{{l.lac_name}}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                            </div>
+                            <div class="row">
+                                    <div class="mb-3 col">
+                                        <label class="form-label">Employee Grade</label>
+                                        <input type="text" class="form-control" name="grade" placeholder="Enter the employee's grade" required>
+                                    </div>
+                                    <div class="mb-3 col">
+                                        <label class="form-label">Employee Type</label>
+                                        <select class="form-select" aria-label="Default select example" name="type">
+                                            <option selected disabled="true">--Select employee type--</option>
+                                            <option value="Regular">Regular</option>
+                                            <option value="Contractual">Contractual</option>
+                                            <option value="Fixed Pay">Fixed Pay</option>
+                                        </select>
+                                    </div>
+                            </div>
+                            <div class="row">
+                                    <div class="mb-3 col">
+                                        <label class="form-label">Employee Bank Name</label>
+                                        <input type="text" class="form-control" name="bank_name" placeholder="Enter the employee's bank name" required>
+                                    </div>
+                                    <div class="mb-3 col">
+                                        <label class="form-label">Employee Bank Branch Name</label>
+                                        <input type="text" class="form-control" name="bank_branch" placeholder="Enter the employee's bank branch" required>
+                                    </div>
+                            </div>
+                            <div class="row">
+                                    <div class="mb-3 col">
+                                        <label class="form-label">Employee Bank IFSC Code</label>
+                                        <input type="text" class="form-control" name="bank_ifsc" placeholder="Enter the employee's bank ifsc code" required>
+                                    </div>
+                                    <div class="mb-3 col">
+                                        <label class="form-label">Employee Bank Account Number</label>
+                                        <input type="text" class="form-control" name="bank_ac" placeholder="Enter the employee's bank account number" required>
+                                    </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary" value="submit">Submit</button>
+                        </form>
+                </div>
+            </div>
+        </div> 
+    </div>       
+{% endblock body %}
